@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Liste des Personnes</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Durée de Fonction</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for personne in personnes %}
+        <tr>
+            <td>{{ personne.nom }}</td>
+            <td>{{ personne.prenom }}</td>
+            <td>{{ personne.duree_fonction }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if personnes.has_previous %}
+        <a href="?page=1">« première</a>
+        <a href="?page={{ personnes.previous_page_number }}">précédente</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ personnes.number }} de {{ personnes.paginator.num_pages }}.
+        </span>
+
+        {% if personnes.has_next %}
+        <a href="?page={{ personnes.next_page_number }}">suivante</a>
+        <a href="?page={{ personnes.paginator.num_pages }}">dernière »</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+

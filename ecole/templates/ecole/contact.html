@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contactez-nous</title>
+</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    <h1>Contactez-nous</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Envoyer</button>
+    </form>
+    {% endblock %}
+</body>
+
+</html>

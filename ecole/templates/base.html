@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL Kheraz</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- <img src="/media/images/logo.jpg" alt="Logo de mon site" id="site-logo"> -->
+        <nav>
+            <ul>
+
+                <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Accueil</a></li>
+                <!--<li><a href="{% url 'presentation' %}"><i class="fas fa-info-circle"></i> Presentation des enseignantes</a></li> -->
+                <li><a href="{% url 'enseignantes' %}"><i class="fas fa-book"></i> Equipes enseignantes </a></li>
+                <!-- <li><a href="{% url 'creer_offre' %}"><i class="fas fa-book"></i> Nos propositions </a></li> -->
+                <li><a href="{% url 'liste_offres' %}"><i class="fas fa-book"></i> Nos propositions </a></li>
+                <!--<li><a href="{% url 'inscription' %}"><i class="fas fa-book"></i> S'inscire </a></li> -->
+                <li class="{% if request.path == '/contact/' %}active{% endif %}"><a href="{% url 'contact' %}">Contactez-nous</a></li>
+                <li><a href="{% url 'add_review' %}"><i class="fas fa-book"></i>Ajouter un avis</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+
+        <div class="footer-social-icons">
+            <p>© 2024 EL - Kheraz</p>
+            <!--  
+            <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+            -->
+            <ul><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></ul>
+            <ul><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a></ul>
+            <ul><a href="https://t.me/votre_nom_utilisateur" target="_blank"><i class="fab fa-telegram-plane"></i>
+                    Telegram</a></ul>
+            <ul><a href="https://wa.me/votre_numero_de_telephone" target="_blank"><i class="fab fa-whatsapp"></i>
+                    WhatsApp</a></ul>
+        </div>
+    </footer>
+</body>
+
+</html>

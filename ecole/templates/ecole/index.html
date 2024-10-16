@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>El - Kheraz </title>
+        <style>
+            .star-rating {
+                color: rgb(0, 255, 55);
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+        
+        {% block content %}
+        <h2>Bienvenue sur le site d'El - Kheraz</h2>
+        <p>Ceci est la page d'accueil de votre site.</p>
+
+        <h2>Note moyenne des avis : {{ average_rating|floatformat:1 }} étoiles</h2>
+        <h2>Répartition des notes</h2>
+        <img src="data:image/png;base64,{{ chart }}" alt="Répartition des notes">
+        <h2>Derniers avis</h2>
+        <ul>
+            {% for review in reviews %}
+            <li>
+                <strong>{{ review.user.username }}</strong> -
+                <span class="star-rating">
+                    {% for i in "12345"|slice:":review.rating" %}
+                    ★ <!-- étoile pleine -->
+                    {% endfor %}
+                    <!--{% for i in "12345"|slice:"review.rating:" %}
+                    ☆ étoile vide 
+                    {% endfor %} -->
+                </span>
+                <p>{{ review.comment }}</p>
+                <small>Posté le {{ review.created_at }}</small>
+            </li>
+            {% empty %}
+            <li>Aucun avis pour le moment.</li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </body>
+
+</html>

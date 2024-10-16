@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notre équipe enseignantes</title>
+</head>
+
+<body>
+    <h1>Les enseignantes</h1>
+    <div class="offres-container">
+        <ul>
+            {% for person in persons %}
+            <div class="enseignantes">
+                <h3> Nom : {{ person.first_name }}</h3>
+                <p>Prenom : {{ person.last_name }}</p>
+                <p>Formation : {{ person.education }}</p>
+                <p>Expérience : {{ person.experience }}</p>
+                {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.titre }}">
+                {% endif %}
+            </div>
+            
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+
+</html>
+
+{% endblock %}

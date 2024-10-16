@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>Liste des Offres</title>
+    <style>
+        .offres-container {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .offre {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: calc(33.333% - 40px);
+            /* Trois offres par ligne */
+            box-sizing: border-box;
+        }
+
+        .offre img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <h2>Liste des Offres</h2>
+    <div class="offres-container">
+        {% for offre in offres %}
+        <div class="offre">
+            <h3>{{ offre.titre }}</h3>
+            <p>{{ offre.description }}</p>
+            <p>Type : {{ offre.type }}</p>
+            <p>Temps : {{ offre.duree }} minutes</p>
+            <p>Prix : {{ offre.prix }} €</p>
+            {% if offre.image %}
+            <img src="{{ offre.image.url }}" alt="{{ offre.titre }}">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+  
+</body>
+{% endblock %}
+<!-- 
+
+        <div class="col-sm-4" text-center>
+            <a href="{% url 'offres' %}">
+                <img class="img-responsive" scr="{{offre.image.url}}" alt="{{offre.titre}}">
+            </a>
+            <h3><a href="{% url 'offres'  %}">{{ offres.titre }}</a></h3>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+       
+        {% if paginate %} 
+        <div class="offre">
+            <h3>{{ detail.titre }}</h3>
+            <p>{{ detail.description }}</p>
+            <p>Type : {{ detail.type }}</p>
+            <p>Temps : {{ detail.duree }} minutes</p>
+            <p>Prix : {{ detail.prix }} €</p>
+            {% if detail.image %}
+            <img src="{{ detail.image.url }}" alt="{{ detail.titre }}">
+            {% endif %}
+        </div>
+        <div class="clearfix"></div>
+        <nav aria-label="">
+            <ul class="pager">
+        
+                {% if details.has_previous %}
+                <li><a href="?page={{ details.previous_page_number }}">Précédent</a></li>
+                {% endif %}
+                {% if details.has_next %}
+                <li><a href="?page={{ details.next_page_number }}">Suivant</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+       
+  
+</body>
+
+</html>
+
+
+-->
